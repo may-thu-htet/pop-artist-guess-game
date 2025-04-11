@@ -69,9 +69,16 @@ for (let i = 0; i < alphabets.length; i++) {
 let artistName = document.getElementById("artist");
 function doStart() {
   let randomArtist = Math.floor(Math.random() * popArtists.length);
-  artistName.textContent = popArtists[randomArtist];
-  artistName.setAttribute("hidden", true);
-  console.log(document.getElementById("artist"));
+  let hiddens = popArtists[randomArtist].split(" ");
+  let hiddenArtist = "";
+  for (let i = 0; i < hiddens.length; i++) {
+    for (let j = 0; j < hiddens[i].length; j++) {
+      if (j === 0) hiddenArtist += hiddens[i][0];
+      else hiddenArtist += "*";
+    }
+    hiddenArtist += " ";
+  }
+  artistName.textContent = hiddenArtist;
 }
 let button = document.getElementById("start");
 button.addEventListener("click", doStart);
