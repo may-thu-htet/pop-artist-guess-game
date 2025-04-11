@@ -54,6 +54,7 @@ const popArtists = [
 
 const lives = 8;
 
+// for displaying characters A-Z
 let targetEl = document.getElementById("characters");
 
 for (let i = 0; i < alphabets.length; i++) {
@@ -63,3 +64,14 @@ for (let i = 0; i < alphabets.length; i++) {
   targetEl.append(newEl);
   newEl.setAttribute("class", "character");
 }
+
+// when clicking the start button
+let artistName = document.getElementById("artist");
+function doStart() {
+  let randomArtist = Math.floor(Math.random() * popArtists.length);
+  artistName.textContent = popArtists[randomArtist];
+  artistName.setAttribute("hidden", true);
+  console.log(document.getElementById("artist"));
+}
+let button = document.getElementById("start");
+button.addEventListener("click", doStart);
