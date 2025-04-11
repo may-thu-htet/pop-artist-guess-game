@@ -1,0 +1,42 @@
+"use-strict";
+
+const alphabets = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+
+const lives = 8;
+
+let targetEl = document.getElementById("characters");
+
+for (let i = 0; i < alphabets.length; i++) {
+  let newEl = document.createElement("button");
+  let newText = document.createTextNode(alphabets[i]);
+  newEl.appendChild(newText);
+  targetEl.append(newEl);
+  newEl.setAttribute("class", "character");
+}
