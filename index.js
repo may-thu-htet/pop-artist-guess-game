@@ -29,6 +29,29 @@ const alphabets = [
   "Z",
 ];
 
+const popArtists = [
+  "Taylor Swift",
+  "Ariana Grande",
+  "Ed Sheeran",
+  "Dua Lipa",
+  "Harry Styles",
+  "Billie Eilish",
+  "Olivia Rodrigo",
+  "Justin Bieber",
+  "Shawn Mendes",
+  "Selena Gomez",
+  "Katy Perry",
+  "The Weeknd",
+  "Bruno Mars",
+  "Doja Cat",
+  "Charlie Puth",
+  "Camila Cabello",
+  "SZA",
+  "Miley Cyrus",
+  "Sam Smith",
+  "Lady Gaga",
+];
+
 const lives = 8;
 
 let targetEl = document.getElementById("characters");
