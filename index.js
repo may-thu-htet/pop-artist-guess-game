@@ -52,17 +52,21 @@ const popArtists = [
   "Lady Gaga",
 ];
 
-const lives = 8;
+let lives = 8;
 
 // for displaying characters A-Z
 let targetEl = document.getElementById("characters");
-
 for (let i = 0; i < alphabets.length; i++) {
   let newEl = document.createElement("button");
   let newText = document.createTextNode(alphabets[i]);
   newEl.appendChild(newText);
   targetEl.append(newEl);
   newEl.setAttribute("class", "character");
+  newEl.setAttribute("id", `artist ${i}`);
+
+  newEl.addEventListener("click", function () {
+    return this.id;
+  });
 }
 
 // when clicking the start button
@@ -82,3 +86,15 @@ function doStart() {
 }
 let button = document.getElementById("start");
 button.addEventListener("click", doStart);
+
+// when clicking the alphabet buttons
+let noOfClicks = 0;
+while (noOfClicks < lives) {
+  let clickedLetter = document.getElementById("");
+
+  noOfClicks++;
+}
+
+// no of lives display
+let noOfLives = document.getElementById("lives");
+noOfLives.textContent += " " + lives;
