@@ -53,6 +53,10 @@ const popArtists = [
 ];
 
 let lives = 8;
+let clickedLetter = "";
+let noOfClicks = null;
+let artistName = document.getElementById("artist");
+let updateArtistName = document.getElementById("artist");
 
 // for displaying characters A-Z
 let targetEl = document.getElementById("characters");
@@ -62,15 +66,28 @@ for (let i = 0; i < alphabets.length; i++) {
   newEl.appendChild(newText);
   targetEl.append(newEl);
   newEl.setAttribute("class", "character");
-  newEl.setAttribute("id", `artist ${i}`);
+  newEl.setAttribute("id", newEl.textContent);
 
+  // when clicking the alphabet buttons
   newEl.addEventListener("click", function () {
-    return this.id;
+    clickedLetter = newEl.textContent;
+    while (noOfClicks < lives) {
+      if (artistName.textContent.includes(clickedLetter)) {
+        let index;
+        for (let i = 0; i < artistName.textContent.length; i++) {
+          if (clickedLetter === artistName.textContent[i]) {
+            index = i;
+          }
+        }
+        updateArtistName.textContent[index] = clickedLetter;
+      } else {
+        noOfClicks += 1;
+      }
+    }
   });
 }
 
 // when clicking the start button
-let artistName = document.getElementById("artist");
 function doStart() {
   let randomArtist = Math.floor(Math.random() * popArtists.length);
   let hiddens = popArtists[randomArtist].split(" ");
@@ -87,14 +104,8 @@ function doStart() {
 let button = document.getElementById("start");
 button.addEventListener("click", doStart);
 
-// when clicking the alphabet buttons
-let noOfClicks = 0;
-while (noOfClicks < lives) {
-  let clickedLetter = document.getElementById("");
-
-  noOfClicks++;
-}
-
 // no of lives display
 let noOfLives = document.getElementById("lives");
-noOfLives.textContent += " " + lives;
+
+noOfLives.textContent =
+  noOfLives.textContent + " " + (noOfClicks ? noOfClicks : lives);
