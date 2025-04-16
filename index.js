@@ -41,7 +41,7 @@ const popArtists = [
   "Shawn Mendes",
   "Selena Gomez",
   "Katy Perry",
-  "The Weeknd",
+  "The Weekend",
   "Bruno Mars",
   "Doja Cat",
   "Charlie Puth",
@@ -53,8 +53,9 @@ const popArtists = [
 ];
 
 let lives = 8;
+let noOfWrongClicks = [0];
 let clickedLetter = "";
-let noOfClicks = null;
+let randomArtist = Math.floor(Math.random() * popArtists.length);
 let artistName = document.getElementById("artist");
 let updateArtistName = document.getElementById("artist");
 
@@ -71,25 +72,34 @@ for (let i = 0; i < alphabets.length; i++) {
   // when clicking the alphabet buttons
   newEl.addEventListener("click", function () {
     clickedLetter = newEl.textContent;
-    while (noOfClicks < lives) {
-      if (artistName.textContent.includes(clickedLetter)) {
+    if (noOfWrongClicks[0] < lives) {
+      if (popArtists[randomArtist].toUpperCase().includes(clickedLetter)) {
         let index;
-        for (let i = 0; i < artistName.textContent.length; i++) {
-          if (clickedLetter === artistName.textContent[i]) {
+        for (let i = 0; i < popArtists[randomArtist].length; i++) {
+          if (clickedLetter === popArtists[randomArtist][i].toUpperCase()) {
             index = i;
           }
         }
-        updateArtistName.textContent[index] = clickedLetter;
+        let currentText = updateArtistName.textContent.split("");
+        currentText[index] = clickedLetter;
+        updateArtistName.textContent = currentText.join("");
       } else {
-        noOfClicks += 1;
+        noOfWrongClicks[0] += 1;
+        console.log("inside else : " + noOfWrongClicks[0]);
+        noOfLives.textContent =
+          "No of lives remaining: " +
+          (lives - noOfWrongClicks[0] <= 0 ? 0 : lives - noOfWrongClicks[0]);
       }
+    } else {
+      let showResult = document.getElementById("result");
+      showResult.textContent = "You Lose!!!";
     }
   });
 }
 
 // when clicking the start button
+
 function doStart() {
-  let randomArtist = Math.floor(Math.random() * popArtists.length);
   let hiddens = popArtists[randomArtist].split(" ");
   let hiddenArtist = "";
   for (let i = 0; i < hiddens.length; i++) {
@@ -106,6 +116,6 @@ button.addEventListener("click", doStart);
 
 // no of lives display
 let noOfLives = document.getElementById("lives");
+console.log("noOfWrongClicks : " + noOfWrongClicks[0]);
 
-noOfLives.textContent =
-  noOfLives.textContent + " " + (noOfClicks ? noOfClicks : lives);
+noOfLives.textContent += " " + (lives - noOfWrongClicks[0]);
