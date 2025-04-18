@@ -55,8 +55,11 @@ const popArtists = [
 let lives = 8;
 let noOfWrongClicks = [0];
 let clickedLetter = "";
+let hiddenArtist = "";
 let randomNo = Math.floor(Math.random() * popArtists.length);
 let randomPopArtist = popArtists[randomNo].toUpperCase();
+console.log("randomPopAtrist " + randomPopArtist);
+
 let randomArtistCharsCount = {};
 
 // adding into the charCount map
@@ -65,8 +68,6 @@ for (let i = 1; i < randomPopArtist.length; i++) {
   randomArtistCharsCount[randomPopArtist[i]] =
     (randomArtistCharsCount[randomPopArtist[i]] || 0) + 1;
 }
-console.log(randomPopArtist);
-console.log({ randomArtistCharsCount });
 
 // DOM
 let artistName = document.getElementById("artist");
@@ -86,32 +87,41 @@ for (let i = 0; i < alphabets.length; i++) {
   // when clicking the alphabet buttons
   newEl.addEventListener("click", function () {
     clickedLetter = newEl.textContent;
-    console.log(clickedLetter);
-    console.log(randomArtistCharsCount[clickedLetter]);
     if (noOfWrongClicks[0] < lives) {
       if (randomArtistCharsCount[clickedLetter]) {
         let index;
-        for (let i = 0; i < randomPopArtist.length; i++) {
+        for (let i = 1; i < randomPopArtist.length; i++) {
+          if (randomPopArtist[i] == " ") i += 2;
           if (clickedLetter === randomPopArtist[i]) {
-            console.log("artist at i : " + randomPopArtist[i]);
-            randomPopArtist.replace(randomPopArtist[i], "#");
-            console.log("randomPopArtist after adding # :" + randomPopArtist);
             index = i;
-            if (randomArtistCharsCount[randomPopArtist[i]] > 1) {
-              randomArtistCharsCount[randomPopArtist[i]]--;
-            } else {
-              delete randomArtistCharsCount[randomPopArtist[i]];
-            }
+            // if (randomArtistCharsCount[randomPopArtist[i]] > 1) {
+            //   randomArtistCharsCount[randomPopArtist[i]]--;
+            // } else {
+            //   delete randomArtistCharsCount[randomPopArtist[i]];
+            // }
 
-            console.log("inside for loop:---");
-            console.log({ randomArtistCharsCount });
-            if (!randomArtistCharsCount && lives) {
+            // replace the random artist char with "*"
+            let randomAtristCharList = randomPopArtist.split("");
+            randomAtristCharList[i] = "*";
+            randomPopArtist = randomAtristCharList.join("");
+
+            console.log("randomPopArtistcharList" + randomAtristCharList);
+            console.log("randomPopArtist" + randomPopArtist);
+
+            // won statement
+            if (randomPopArtist.trim() === hiddenArtist.trim() && lives != 0) {
+              console.log("randomPopArtist= " + randomPopArtist);
+              console.log("hidden Artist= " + hiddenArtist);
               showResult.textContent =
                 "Congratulations🎆🎆🎆! You've won!!!🤩🤩🤩";
             }
             break;
           }
         }
+        // For loop ends here
+
+        // if there user press same char: repeatedly, it need to show if there is in the
+        // map and show(unhide) it in the artist name
         let currentText = updateArtistName.textContent.split("");
         currentText[index] = clickedLetter;
         updateArtistName.textContent = currentText.join("");
@@ -131,7 +141,6 @@ for (let i = 0; i < alphabets.length; i++) {
 
 function doStart() {
   let hiddens = randomPopArtist.split(" ");
-  let hiddenArtist = "";
   for (let i = 0; i < hiddens.length; i++) {
     for (let j = 0; j < hiddens[i].length; j++) {
       if (j === 0) hiddenArtist += hiddens[i][0];
