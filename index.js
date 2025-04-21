@@ -93,12 +93,14 @@ for (let i = 0; i < alphabets.length; i++) {
         for (let i = 1; i < randomPopArtist.length; i++) {
           if (randomPopArtist[i] == " ") i += 2;
           if (clickedLetter === randomPopArtist[i]) {
+            thisButton = document.getElementById(this.id);
+            thisButton.setAttribute("class", "character correct");
             index = i;
-            // if (randomArtistCharsCount[randomPopArtist[i]] > 1) {
-            //   randomArtistCharsCount[randomPopArtist[i]]--;
-            // } else {
-            //   delete randomArtistCharsCount[randomPopArtist[i]];
-            // }
+            if (randomArtistCharsCount[randomPopArtist[i]] > 1) {
+              randomArtistCharsCount[randomPopArtist[i]]--;
+            } else {
+              delete randomArtistCharsCount[randomPopArtist[i]];
+            }
 
             // replace the random artist char with "*"
             let randomAtristCharList = randomPopArtist.split("");
@@ -120,8 +122,7 @@ for (let i = 0; i < alphabets.length; i++) {
         }
         // For loop ends here
 
-        // if there user press same char: repeatedly, it need to show if there is in the
-        // map and show(unhide) it in the artist name
+        // update the display name on screen whenever the correct char is clicked
         let currentText = updateArtistName.textContent.split("");
         currentText[index] = clickedLetter;
         updateArtistName.textContent = currentText.join("");
@@ -130,6 +131,8 @@ for (let i = 0; i < alphabets.length; i++) {
         noOfLives.textContent =
           "No of lives remaining: " +
           (lives - noOfWrongClicks[0] <= 0 ? 0 : lives - noOfWrongClicks[0]);
+        thisButton = document.getElementById(this.id);
+        thisButton.setAttribute("class", "character notCorrect");
       }
     } else {
       showResult.textContent = "You Lose!!!";

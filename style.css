@@ -28,6 +28,13 @@
   margin: 5px 5px;
 }
 
+.correct {
+  background-color: green;
+}
+.notCorrect {
+  background-color: red;
+}
+
 .result {
   display: block;
   background-color: azure;
