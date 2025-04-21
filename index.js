@@ -59,7 +59,9 @@ let hiddenArtist = "";
 let randomNo = Math.floor(Math.random() * popArtists.length);
 let randomPopArtist = popArtists[randomNo].toUpperCase();
 let revealButton = document.getElementById("reveal");
-console.log("randomPopAtrist " + randomPopArtist);
+let startButton = document.getElementById("start");
+
+// console.log("randomPopAtrist " + randomPopArtist);
 
 let randomArtistCharsCount = {};
 
@@ -156,10 +158,9 @@ function doStart() {
     hiddenArtist += " ";
   }
   artistName.textContent = hiddenArtist;
-  button.disabled = true;
+  startButton.disabled = true;
 }
-let button = document.getElementById("start");
-button.addEventListener("click", doStart);
+startButton.addEventListener("click", doStart);
 
 // no of lives display
 let noOfLives = document.getElementById("lives");
@@ -172,6 +173,7 @@ function doReveal() {
   let revealContent = document.getElementById("artist");
   revealContent.textContent = randomPopArtist;
   revealButton.disabled = true;
+  startButton.disabled = true;
   showResult.textContent = "You Lose!!!";
   showResult.setAttribute("class", "result lose");
   lives = 0;
