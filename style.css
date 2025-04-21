@@ -41,6 +41,15 @@
   border: none;
   border: 1px solid rgb(111, 130, 239);
 }
+
+.lose {
+  background-color: red;
+  color: white;
+}
+
+.winner {
+  background-color: rgb(248, 157, 172);
+}
 .lives {
   display: block;
   border: 1px solid rgb(111, 130, 239);

@@ -58,6 +58,7 @@ let clickedLetter = "";
 let hiddenArtist = "";
 let randomNo = Math.floor(Math.random() * popArtists.length);
 let randomPopArtist = popArtists[randomNo].toUpperCase();
+let revealButton = document.getElementById("reveal");
 console.log("randomPopAtrist " + randomPopArtist);
 
 let randomArtistCharsCount = {};
@@ -112,10 +113,12 @@ for (let i = 0; i < alphabets.length; i++) {
 
             // won statement
             if (randomPopArtist.trim() === hiddenArtist.trim() && lives != 0) {
-              console.log("randomPopArtist= " + randomPopArtist);
-              console.log("hidden Artist= " + hiddenArtist);
+              // console.log("randomPopArtist= " + randomPopArtist);
+              // console.log("hidden Artist= " + hiddenArtist);
+              revealButton.disabled = true;
               showResult.textContent =
                 "Congratulations🎆🎆🎆! You've won!!!🤩🤩🤩";
+              showResult.setAttribute("class", "result winner");
             }
             break;
           }
@@ -136,6 +139,7 @@ for (let i = 0; i < alphabets.length; i++) {
       }
     } else {
       showResult.textContent = "You Lose!!!";
+      showResult.setAttribute("class", "result lose");
     }
   });
 }
@@ -152,6 +156,7 @@ function doStart() {
     hiddenArtist += " ";
   }
   artistName.textContent = hiddenArtist;
+  button.disabled = true;
 }
 let button = document.getElementById("start");
 button.addEventListener("click", doStart);
@@ -159,3 +164,17 @@ button.addEventListener("click", doStart);
 // no of lives display
 let noOfLives = document.getElementById("lives");
 noOfLives.textContent += " " + (lives - noOfWrongClicks[0]);
+
+// when the REVEAL button is clicked,
+
+revealButton.addEventListener("click", doReveal);
+function doReveal() {
+  let revealContent = document.getElementById("artist");
+  revealContent.textContent = randomPopArtist;
+  revealButton.disabled = true;
+  showResult.textContent = "You Lose!!!";
+  showResult.setAttribute("class", "result lose");
+  lives = 0;
+  noOfLives.textContent =
+    "No of lives remaining: " + (lives - noOfWrongClicks[0]);
+}
