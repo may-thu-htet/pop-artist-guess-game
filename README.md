@@ -1,6 +1,6 @@
 # 🎵 JavaScript Course Project: Hangman (Musical Edition)
 
-Welcome to the **optional course project** for the IT Specialist JavaScript course!
+Welcome to the **course project** for the IT Specialist JavaScript course!
 
 This is a fun way to put **your JavaScript skills** to the test by building a musical-themed game of **Hangman** 🎤🎧.
 
@@ -20,7 +20,7 @@ Choose letters from the keyboard — but be careful, you only have **8 lives**!
 
 - Press **Start** to begin the game.
 - You will see blank spaces for each letter in the hidden pop artist's name.
-- Use your keyboard to **guess letters**.
+- Click character buttons to **guess letters**.
 - **Wrong guesses** cost you a life.
 - You have **8 lives total**.
 - Press **Reveal** to end the game and show the answer.
