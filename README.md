@@ -2,7 +2,7 @@
 
 Welcome to the **course project** for the IT Specialist JavaScript course!
 
-This is a fun way to put **your JavaScript skills** to the test by building a musical-themed game of **Hangman** 🎤🎧.
+This is a fun way to put **JavaScript skills** to the test by building a musical-themed game of **Hangman** 🎤🎧.
 
 ---
 
@@ -11,7 +11,7 @@ This is a fun way to put **your JavaScript skills** to the test by building a mu
 Can you reveal the name of the pop singer or group?  
 Choose letters from the keyboard — but be careful, you only have **8 lives**!
 
-![Hangman Game Screenshot](https://github.com/may-thu-htet/pop-artist-guess-game/blob/UI/Screenshot 2025-04-23 143422.png)  
+![Hangman Game Screenshot](https://github.com/may-thu-htet/pop-artist-guess-game/blob/UI/Screenshot2.png)  
 *A sample layout — feel free to get creative with your own design!*
 
 ---
@@ -32,7 +32,7 @@ Choose letters from the keyboard — but be careful, you only have **8 lives**!
 
 ## 🛠️ Project Goals
 
-This project is about practicing your **JavaScript knowledge**:
+This project is about practicing **JavaScript knowledge**:
 - Variables & data types
 - Conditionals
 - Loops
